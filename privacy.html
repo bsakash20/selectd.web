@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Selectd</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        .legal-content {
+            padding: 10rem 0 6rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-content h1 {
+            margin-bottom: 2rem;
+        }
+
+        .legal-content h2 {
+            margin: 2rem 0 1rem;
+            color: var(--primary-light);
+        }
+
+        .legal-content p,
+        .legal-content ul {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .legal-content ul {
+            padding-left: 1.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="glass-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <img src="icon.png" alt="Selectd Logo" class="logo-icon">
+                <span class="logo-text">Selectd</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mailto:support@selectd.co.in" class="btn-primary-small">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <article class="legal-content">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Privacy Policy</h1>
+            <p>Last updated: December 22, 2025</p>
+
+            <p>At Selectd, accessible from our mobile application, one of our main priorities is the privacy of our
+                visitors. This Privacy Policy document contains types of information that is collected and recorded by
+                Selectd and how we use it.</p>
+
+            <h2>1. Data Storage & Security</h2>
+            <p>Selectd is designed with a "local-first" philosophy. Your job application data, notes, and reminders are
+                stored locally on your device using an encrypted SQLite database. We do not host your personal job
+                search data on our servers.</p>
+            <p>Sensitive information, such as authentication tokens or API keys, are stored in the device's Secure Store
+                (iOS Keychain / Android Keystore).</p>
+
+            <h2>2. Third-Party Services</h2>
+            <p>We use a limited number of third-party services to ensure the app runs smoothly and to provide essential
+                functionality:</p>
+            <ul>
+                <li><strong>Sentry:</strong> Used for crash reporting and error tracking to help us fix bugs and improve
+                    stability. No personally identifiable job data is sent to Sentry.</li>
+                <li><strong>RevenueCat:</strong> Used to manage in-app subscriptions and purchases. RevenueCat may
+                    collect transactional data to verify your subscription status.</li>
+                <li><strong>Expo:</strong> Our framework provider. We use Expo's update service to deliver critical bug
+                    fixes to you over-the-air.</li>
+            </ul>
+
+            <h2>3. Log Files</h2>
+            <p>Selectd follows a standard procedure of using log files for debugging purposes within the app. These logs
+                are stored locally and are only accessible to the developer if you explicitly choose to share them for
+                support purposes.</p>
+
+            <h2>4. Consent</h2>
+            <p>By using our app, you hereby consent to our Privacy Policy and agree to its terms.</p>
+
+            <h2>5. Contact Us</h2>
+            <p>If you have additional questions or require more information about our Privacy Policy, do not hesitate to
+                contact us at <a href="mailto:support@selectd.co.in">support@selectd.co.in</a>.</p>
+        </article>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2025 Selectd. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
