@@ -7,20 +7,20 @@
     <title>Selectd | Premium Job Application Tracker</title>
     <meta name="description"
         content="Organize your job search journey with Selectd. A premium, high-performance tracking app for serious job seekers.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="icon" type="image/png" href="assets/img/icon.png">
 </head>
 
 <body>
     <nav class="glass-nav">
         <div class="container nav-content">
             <div class="logo">
-                <img src="icon.png" alt="Selectd Logo" class="logo-icon">
+                <img src="assets/img/icon.png" alt="Selectd Logo" class="logo-icon">
                 <span class="logo-text">Selectd</span>
             </div>
             <ul class="nav-links">
@@ -35,19 +35,51 @@
     <header class="hero">
         <div class="container hero-container">
             <div class="hero-content" data-reveal="left">
-                <div class="badge">Elevate Your Search</div>
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    Elevate Your Search
+                </div>
                 <h1>Master Your <span class="gradient-text">Job Hunt</span> with Precision.</h1>
                 <p>Selectd is the premium application tracker designed for speed, organization, and a delightful user
                     experience. Spend less time managing spreadsheets and more time winning offers.</p>
                 <div class="hero-cta">
-                    <a href="#" class="btn-primary">Download App</a>
+                    <a href="#" class="btn-primary">Download App <span class="arrow">→</span></a>
                     <a href="#features" class="btn-secondary">Explore Features</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">60fps</span>
+                        <span class="stat-label">Performance</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Secure Local Storage</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-visual" data-reveal="right">
-                <div class="mockup-container">
-                    <img src="mockup.png" alt="Selectd App Mockup" class="app-mockup-img">
-                    <div class="glow-effect"></div>
+                <!-- CSS-Only Device Placeholder -->
+                <div class="device-frame">
+                    <div class="device-notch"></div>
+                    <div class="device-screen">
+                        <div class="device-content-placeholder">
+                            <div class="placeholder-header"></div>
+                            <div class="placeholder-grid">
+                                <div class="placeholder-col">
+                                    <div class="placeholder-label">Applied</div>
+                                    <div class="placeholder-card shimmer"></div>
+                                    <div class="placeholder-card shimmer"></div>
+                                </div>
+                                <div class="placeholder-col">
+                                    <div class="placeholder-label">Interviewing</div>
+                                    <div class="placeholder-card shimmer"></div>
+                                </div>
+                            </div>
+                            <div class="placeholder-msg">Add Your Screen Here</div>
+                        </div>
+                    </div>
+                    <div class="device-glow"></div>
                 </div>
             </div>
         </div>
@@ -61,25 +93,45 @@
             </div>
             <div class="feature-grid">
                 <div class="feature-card" data-reveal="bottom">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
                     <h3>Pipeline Management</h3>
                     <p>Track applications through custom stages with fluid, native animations. Never lose track of where
                         you stand.</p>
                 </div>
                 <div class="feature-card" data-reveal="bottom" data-delay="100">
-                    <div class="feature-icon">⏰</div>
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
                     <h3>Smart Reminders</h3>
                     <p>Custom presets for interviews and follow-ups. Selectd ensures you're always prepared and on time.
                     </p>
                 </div>
                 <div class="feature-card" data-reveal="bottom" data-delay="200">
-                    <div class="feature-icon">📈</div>
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
                     <h3>Career Insights</h3>
                     <p>Beautiful visualizations of your search progress. Data-driven insights to optimize your strategy.
                     </p>
                 </div>
                 <div class="feature-card" data-reveal="bottom" data-delay="300">
-                    <div class="feature-icon">📄</div>
+                    <div class="feature-icon-wrapper">
+                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
                     <h3>PDF Exports</h3>
                     <p>Generate professional reports of your search history for personal review or archival.</p>
                 </div>
@@ -118,7 +170,7 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <div class="logo">
-                    <img src="icon.png" alt="Selectd Logo" class="logo-icon">
+                    <img src="assets/img/icon.png" alt="Selectd Logo" class="logo-icon">
                     <span class="logo-text">Selectd</span>
                 </div>
                 <p>The premium standard for job search organization.</p>
@@ -144,7 +196,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
