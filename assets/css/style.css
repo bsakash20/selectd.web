@@ -576,6 +576,25 @@ h3,
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+.job-card-mini.has-stripe {
+    position: relative;
+    padding-left: 20px;
+    /* Make room for the stripe */
+}
+
+.job-card-mini.has-stripe::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, #6366f1, #a855f7);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    z-index: 1;
+}
+
 .job-card-mini {
     background: #1e293b;
     border: 1px solid rgba(255, 255, 255, 0.05);
