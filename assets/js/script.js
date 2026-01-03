@@ -294,19 +294,83 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // Add subtle parallax to hero device
+    // Refined 3D Tilt with Glare for Device
     // ==========================================
     const deviceFrame = document.querySelector('.device-frame');
+    const heroSection = document.querySelector('.hero');
 
-    if (deviceFrame) {
-        document.addEventListener('mousemove', (e) => {
-            const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
-            const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
-            deviceFrame.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    if (deviceFrame && heroSection) {
+        // Track mouse relative to hero section for more localized control
+        heroSection.addEventListener('mousemove', (e) => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            // Calculate rotation (Magnetic effect - tilts TOWARDS mouse)
+            // Mouse Top (-y) -> RotateX negative (Top comes clsoer)
+            const xRotation = (y - rect.height / 2) / rect.height * 20;
+            const yRotation = -1 * (x - rect.width / 2) / rect.width * 20;
+
+            // Calculate glare position relative to the DEVICE, not just the section
+            const deviceRect = deviceFrame.getBoundingClientRect();
+            const deviceX = e.clientX - deviceRect.left;
+            const deviceY = e.clientY - deviceRect.top;
+
+            const glarePosX = (deviceX / deviceRect.width) * 100;
+            const glarePosY = (deviceY / deviceRect.height) * 100;
+
+            // Apply via CSS variables
+            deviceFrame.style.setProperty('--rotate-x', `${xRotation}deg`);
+            deviceFrame.style.setProperty('--rotate-y', `${yRotation}deg`);
+            deviceFrame.style.setProperty('--glare-x', `${glarePosX}%`);
+            deviceFrame.style.setProperty('--glare-y', `${glarePosY}%`);
         });
 
-        document.addEventListener('mouseleave', () => {
-            deviceFrame.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        // Reset on leave
+        heroSection.addEventListener('mouseleave', () => {
+            deviceFrame.style.setProperty('--rotate-x', '0deg');
+            deviceFrame.style.setProperty('--rotate-y', '0deg');
+            deviceFrame.style.setProperty('--glare-x', '0%');
+            deviceFrame.style.setProperty('--glare-y', '0%');
         });
+    }
+
+    // ==========================================
+    // Auto-Swipe Animation for Job Card
+    // ==========================================
+    const swipeCard = document.querySelector('.job-card-mini.demo-swipe');
+
+    if (swipeCard) {
+        // Initial pause before starting animation loop
+        setTimeout(() => {
+            const runSwipe = () => {
+                // Return if user prefers reduced motion
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+                // Add class to "swipe" (reveal text)
+                swipeCard.classList.add('swiped');
+
+                // Remove it after a delay to "unswipe" (hide text)
+                setTimeout(() => {
+                    swipeCard.classList.remove('swiped');
+                }, 2000);
+            };
+
+            runSwipe(); // Run once immediately after initial delay
+
+            const swipeInterval = setInterval(runSwipe, 6000); // Repeat every 6 seconds
+
+            // Allow user interaction to pause animation temporarily
+            const jobCards = document.querySelectorAll('.job-card-mini');
+            jobCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // For CSS animations
+                    card.style.animationPlayState = 'paused';
+                });
+            });
+
+        }, 2000);
     }
 });
