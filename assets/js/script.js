@@ -373,4 +373,107 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }, 2000);
     }
+
+    // ==========================================
+    // Store Buttons & Modals Logic
+    // ==========================================
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalIOS = document.getElementById('modal-ios');
+    const modalAndroid = document.getElementById('modal-android');
+    const closeButtons = document.querySelectorAll('.modal-close');
+
+    function openModal(modal) {
+        if (modal && modalOverlay) {
+            modalOverlay.classList.add('active');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+
+    function closeModal() {
+        if (modalOverlay) modalOverlay.classList.remove('active');
+        document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+        document.body.style.overflow = '';
+    }
+
+    // Open iOS Modal
+    document.querySelectorAll('.js-store-btn-ios').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(modalIOS);
+        });
+    });
+
+    // Open Android Modal
+    document.querySelectorAll('.js-store-btn-android').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(modalAndroid);
+        });
+    });
+
+    // Close Modals (x button)
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', closeModal);
+    });
+
+    // Close Modals (overlay click)
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+
+    // Close Modals (ESC key)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // Generic AJAX Form Handling
+    async function handleFormSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        const originalBtnText = btn.textContent;
+
+        // Visual feedback - Loading
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Success
+                form.style.display = 'none';
+                const successMsg = form.parentElement.querySelector('.success-message');
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                }
+            } else {
+                // Error (fallback)
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('Something went wrong. Please try again or email us directly at selectd.app@gmail.com');
+            btn.textContent = originalBtnText;
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }
+    }
+
+    // Attach listeners to both forms
+    const forms = document.querySelectorAll('.email-form');
+    forms.forEach(form => {
+        form.addEventListener('submit', handleFormSubmit);
+    });
 });
