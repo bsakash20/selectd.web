@@ -54,7 +54,7 @@
                 <span class="logo-text">selectd</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="mailto:support@selectd.co.in" class="btn-primary-small">Support</a></li>
             </ul>
         </div>
@@ -62,9 +62,9 @@
 
     <div class="container">
         <article class="legal-content">
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <a href="/" class="back-link">← Back to Home</a>
             <h1>Privacy Policy</h1>
-            <p>Last updated: January 1, 2026</p>
+            <p>Last Updated: January 2026</p>
 
             <h2>1. Introduction</h2>
             <p>Selectd ("we", "our", or "us") respects your privacy and is committed to protecting it.
@@ -76,44 +76,55 @@
                 required for the App's functionality.</p>
 
             <h3>Locally Stored Data</h3>
-            <p>The following data is stored exclusively on your device's internal storage (SQLite database):</p>
+            <p>The following data is stored exclusively on your device's internal storage (SQLite database). <strong>We
+                    do not have access to this data:</strong></p>
             <ul>
                 <li>Job application details (companies, roles, notes, status)</li>
                 <li>File names of uploaded resumes</li>
                 <li>Generated HTML export files</li>
                 <li>Reminder schedules</li>
             </ul>
-            <p>We do not have access to this data. It remains on your device and is not transmitted to our servers.</p>
+
+            <h3>Voice Data</h3>
+            <p>Your speech is processed by your device's operating system (Apple or Google speech services). We do
+                <strong>NOT</strong> upload your audio recordings to our servers. Transcripts are processed locally on
+                your device.
+            </p>
+
+            <h3>Photo Library & Camera</h3>
+            <p>Photos used for custom avatars are stored locally only and are not uploaded to any external servers.</p>
+
+            <h3>Calendar Access</h3>
+            <p>Reminder events are created locally on your device. We do not read your existing calendar data.</p>
 
             <h3>Analytics & Tracking</h3>
-            <p>We may use limited analytics to improve our App's performance and understand usage patterns.</p>
             <ul>
-                <li><strong>RevenueCat:</strong> We use RevenueCat to manage subscriptions and in-app purchases.
-                    RevenueCat may collect an anonymous App User ID and purchase history to validate your subscription
-                    status.</li>
-                <li><strong>Sentry:</strong> We use Sentry to collect anonymous crash reports and performance data. This
-                    helps us identify and fix bugs. Sentry may collect device information (model, OS version) and stack
-                    traces. No personal job data is sent to Sentry.</li>
+                <li><strong>RevenueCat:</strong> Used to manage subscriptions and in-app purchases. It may collect an
+                    anonymous App User ID and purchase history.</li>
+                <li><strong>Sentry:</strong> Used to collect anonymous crash reports and performance data to help fix
+                    bugs. No personal job data is sent to Sentry.</li>
+                <li><strong>App Tracking Transparency (iOS):</strong> On iOS, we request your permission before tracking
+                    activity across other companies' apps for advertising purposes.</li>
             </ul>
-            <p>On iOS, we request your permission via App Tracking Transparency (ATT) before tracking your activity
-                across other companies' apps and websites for advertising or data broker purposes. You can withdraw this
-                consent at any time in your device settings.</p>
 
             <h2>3. Third-Party Services</h2>
-            <p>We maintain a strict policy against sharing your data. However, the App relies on the following
+            <p>We maintain a strict policy against sharing your data. However, the App relies on several essential
                 third-party services:</p>
             <ul>
-                <li><strong>Apple App Store & Google Play Store:</strong> Process all payments. We do not process or
-                    store your credit card information.</li>
-                <li><strong>RevenueCat:</strong> User subscription management infrastructure.</li>
+                <li><strong>Apple App Store & Google Play Store:</strong> Process all payments. We do not store credit
+                    card information.</li>
+                <li><strong>RevenueCat:</strong> Subscription management infrastructure.</li>
                 <li><strong>Sentry:</strong> App monitoring and error tracking.</li>
+                <li><strong>OS Speech Services:</strong> Apple (iOS) and Google (Android) handle speech-to-text
+                    processing on their respective platforms.</li>
             </ul>
 
             <h2>4. Data Deletion</h2>
-            <p>You have full control over your data.</p>
+            <p>You have full control over your data:</p>
             <ul>
-                <li><strong>Delete All Data:</strong> You can permanently delete all locally stored data by navigating
-                    to <em>Settings &gt; Danger Zone &gt; Delete All Data</em>.</li>
+                <li><strong>Delete All Data:</strong> You can permanently delete all locally stored data via
+                    <em>Settings > Danger Zone > Delete All Data</em>.
+                </li>
                 <li><strong>Uninstalling:</strong> Uninstalling the App will also remove all local data.</li>
             </ul>
 
