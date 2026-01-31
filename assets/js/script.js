@@ -373,39 +373,66 @@ document.addEventListener('DOMContentLoaded', () => {
     // Job Search Health Score Scan
     // ==========================================
     const runHealthBtn = document.querySelector('.js-run-health');
+    const quizSteps = document.querySelectorAll('.quiz-step');
+    const quizOpts = document.querySelectorAll('.quiz-opt');
     const healthNumber = document.querySelector('.js-health-number');
-    const healthPath = document.querySelector('.js-health-path');
+    const healthPathFinal = document.querySelector('.js-health-path-final');
     const healthStatus = document.querySelector('.js-health-status');
     const healthMsg = document.querySelector('.js-health-msg');
     const shareResult = document.querySelector('.js-share-result');
     const shareTwitter = document.querySelector('.js-share-twitter');
+    const shareLinkedin = document.querySelector('.js-share-linkedin');
+
+    let currentStep = 0;
+    let totalScore = 0;
 
     if (runHealthBtn) {
         runHealthBtn.addEventListener('click', () => {
-            runHealthBtn.disabled = true;
-            runHealthBtn.textContent = 'Scanning Digital Presence...';
+            if (currentStep === 0) {
+                goToStep(1);
+                runHealthBtn.style.display = 'none';
+            }
+        });
 
-            let currentScore = 0;
-            const targetScore = Math.floor(Math.random() * (98 - 75) + 75); // Always give a high elite score 75-98
+        quizOpts.forEach(opt => {
+            opt.addEventListener('click', () => {
+                const points = parseInt(opt.dataset.points);
+                totalScore += points;
+                opt.classList.add('selected');
+                setTimeout(() => goToStep(currentStep + 1), 300);
+            });
+        });
 
+        function goToStep(step) {
+            quizSteps.forEach(s => s.classList.remove('active'));
+            currentStep = step;
+            const nextStep = document.querySelector(`.quiz-step[data-step="${step}"]`);
+            if (nextStep) {
+                nextStep.classList.add('active');
+            } else {
+                calculateFinalScore();
+            }
+        }
+
+        function calculateFinalScore() {
+            const finalStep = document.querySelector('.quiz-step[data-step="final"]');
+            finalStep.classList.add('active');
+            let displayScore = 0;
+            const targetScore = Math.min(98, totalScore);
             const interval = setInterval(() => {
-                currentScore++;
-                healthNumber.textContent = currentScore;
-                healthPath.setAttribute('stroke-dasharray', `${currentScore}, 100`);
-
-                if (currentScore >= targetScore) {
+                displayScore++;
+                if (healthNumber) healthNumber.textContent = displayScore;
+                if (healthPathFinal) healthPathFinal.setAttribute('stroke-dasharray', `${displayScore}, 100`);
+                if (displayScore >= targetScore) {
                     clearInterval(interval);
-
-                    // Update Status
-                    healthStatus.textContent = 'Elite Seeker Found';
-                    healthMsg.textContent = `You are in the top ${100 - targetScore}% of job seekers. Use selectd to maintain this edge.`;
-
-                    // Show Share
-                    runHealthBtn.style.display = 'none';
+                    healthStatus.textContent = targetScore > 85 ? 'Elite Seeker Found' : 'Strong Profile Found';
+                    healthMsg.textContent = targetScore > 85 ?
+                        `You are in the top ${100 - targetScore}% of candidates. Use selectd to maintain this edge.` :
+                        `You have a solid foundation. selectd will help you push into the elite 1%.`;
                     shareResult.style.display = 'flex';
                 }
-            }, 25);
-        });
+            }, 20);
+        }
 
         if (shareTwitter) {
             shareTwitter.addEventListener('click', () => {
@@ -416,7 +443,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        const shareLinkedin = document.querySelector('.js-share-linkedin');
         if (shareLinkedin) {
             shareLinkedin.addEventListener('click', () => {
                 const url = "https://selectd.co.in";

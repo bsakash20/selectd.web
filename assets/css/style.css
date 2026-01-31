@@ -1104,6 +1104,83 @@ h3,
 /* ==========================================
    VIRAL HEALTH SECTION
    ========================================== */
+/* Assessment Quiz Styles */
+.quiz-container {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+}
+
+.quiz-step {
+    display: none;
+    animation: fadeIn 0.4s ease;
+    width: 100%;
+}
+
+.quiz-step.active {
+    display: block;
+}
+
+.quiz-intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.quiz-step h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text);
+}
+
+.quiz-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.quiz-opt {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    padding: 1.5rem 2rem;
+    border-radius: 18px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    text-align: center;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+}
+
+.quiz-opt:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--primary);
+    color: var(--text);
+    transform: translateY(-2px);
+}
+
+.quiz-opt.selected {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .quiz-intro {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+}
+
 .viral-health-section {
     padding: 8rem 0;
     background: var(--bg-alt);
@@ -1203,6 +1280,14 @@ h3,
 
 .health-status p {
     color: var(--text-muted);
+}
+
+.js-run-health {
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 18px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .health-actions {

@@ -840,26 +840,115 @@
                 </div>
 
                 <div class="health-preview">
-                    <div class="score-circle">
-                        <svg viewBox="0 0 36 36" class="circular-chart">
-                            <path class="circle-bg"
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                            <path class="circle-path js-health-path" stroke-dasharray="0, 100"
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                        </svg>
-                        <div class="score-text">
-                            <span class="score-number js-health-number">0</span>
-                            <span class="score-percent">%</span>
+                    <!-- Quiz Container -->
+                    <div class="quiz-container js-quiz-container">
+                        <div class="quiz-step active" data-step="0">
+                            <div class="quiz-intro">
+                                <div class="score-circle static">
+                                    <svg viewBox="0 0 36 36" class="circular-chart">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle-path js-health-path" stroke-dasharray="25, 100"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    </svg>
+                                    <div class="score-text">
+                                        <span class="score-number">?</span>
+                                    </div>
+                                </div>
+                                <div class="health-status">
+                                    <h4>Benchmark Your Search</h4>
+                                    <p>Answer 6 elite audit steps to see where you rank among the top 1% of candidates.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="health-status">
-                        <h4 class="js-health-status">Ready to Scan</h4>
-                        <p class="js-health-msg">Click below to analyze your current pipeline strength.</p>
+
+                        <!-- Question 1 -->
+                        <div class="quiz-step" data-step="1">
+                            <h3>How do you currently track your applications?</h3>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-points="10">Memory / Browser History</button>
+                                <button class="quiz-opt" data-points="20">Excel / Google Sheets</button>
+                                <button class="quiz-opt" data-points="30">Structured Pipeline Tool</button>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="quiz-step" data-step="2">
+                            <h3>How disciplined is your follow-up process?</h3>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-points="10">I rarely follow up</button>
+                                <button class="quiz-opt" data-points="20">I follow up if I remember</button>
+                                <button class="quiz-opt" data-points="30">I follow up every 48 hours</button>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="quiz-step" data-step="3">
+                            <h3>Do you set reminders for interview deadlines?</h3>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-points="5">No, I rely on my inbox</button>
+                                <button class="quiz-opt" data-points="10">Sometimes, for big roles</button>
+                                <button class="quiz-opt" data-points="15">Always, for every stage</button>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="quiz-step" data-step="4">
+                            <h3>How aware are you of your interview conversion rate?</h3>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-points="5">I have no idea</button>
+                                <button class="quiz-opt" data-points="10">Roughly, but no data</button>
+                                <button class="quiz-opt" data-points="15">I track it precisely</button>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="quiz-step" data-step="5">
+                            <h3>Do you reach out to recruiters/managers directly?</h3>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-points="5">Only "Easy Apply"</button>
+                                <button class="quiz-opt" data-points="15">I try occasionally</button>
+                                <button class="quiz-opt" data-points="20">For every high-priority role</button>
+                            </div>
+                        </div>
+
+                        <!-- Question 6 -->
+                        <div class="quiz-step" data-step="6">
+                            <h3>Is your resume optimized for your target persona?</h3>
+                            <div class="quiz-options">
+                                <button class="quiz-opt" data-points="5">Generic for all roles</button>
+                                <button class="quiz-opt" data-points="10">Slightly customized</button>
+                                <button class="quiz-opt" data-points="15">Fully tailored for every application</button>
+                            </div>
+                        </div>
+
+                        <!-- Result Template (Hidden until finish) -->
+                        <div class="quiz-step result-step" data-step="final">
+                            <div class="health-preview">
+                                <div class="score-circle">
+                                    <svg viewBox="0 0 36 36" class="circular-chart">
+                                        <path class="circle-bg"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="circle-path js-health-path-final" stroke-dasharray="0, 100"
+                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    </svg>
+                                    <div class="score-text">
+                                        <span class="score-number js-health-number">0</span>
+                                        <span class="score-percent">%</span>
+                                    </div>
+                                </div>
+                                <div class="health-status">
+                                    <h4 class="js-health-status">Analyzing...</h4>
+                                    <p class="js-health-msg">Processing your search methodology...</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="health-actions">
-                    <button class="btn-primary js-run-health">Scan My Search Strength</button>
+                    <button class="btn-primary js-run-health">Start Assessment</button>
                     <div class="share-result js-share-result" style="display: none;">
                         <button class="btn-secondary js-share-twitter">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
