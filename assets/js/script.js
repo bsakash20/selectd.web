@@ -368,4 +368,52 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.banner-subtitle').textContent = 'Official Android Command Center';
         }
     }
+
+    // ==========================================
+    // Job Search Health Score Scan
+    // ==========================================
+    const runHealthBtn = document.querySelector('.js-run-health');
+    const healthNumber = document.querySelector('.js-health-number');
+    const healthPath = document.querySelector('.js-health-path');
+    const healthStatus = document.querySelector('.js-health-status');
+    const healthMsg = document.querySelector('.js-health-msg');
+    const shareResult = document.querySelector('.js-share-result');
+    const shareTwitter = document.querySelector('.js-share-twitter');
+
+    if (runHealthBtn) {
+        runHealthBtn.addEventListener('click', () => {
+            runHealthBtn.disabled = true;
+            runHealthBtn.textContent = 'Scanning Digital Presence...';
+
+            let currentScore = 0;
+            const targetScore = Math.floor(Math.random() * (98 - 75) + 75); // Always give a high elite score 75-98
+
+            const interval = setInterval(() => {
+                currentScore++;
+                healthNumber.textContent = currentScore;
+                healthPath.setAttribute('stroke-dasharray', `${currentScore}, 100`);
+
+                if (currentScore >= targetScore) {
+                    clearInterval(interval);
+
+                    // Update Status
+                    healthStatus.textContent = 'Elite Seeker Found';
+                    healthMsg.textContent = `You are in the top ${100 - targetScore}% of job seekers. Use selectd to maintain this edge.`;
+
+                    // Show Share
+                    runHealthBtn.style.display = 'none';
+                    shareResult.style.display = 'flex';
+                }
+            }, 25);
+        });
+
+        if (shareTwitter) {
+            shareTwitter.addEventListener('click', () => {
+                const score = healthNumber.textContent;
+                const text = encodeURIComponent(`My Job Search Health Score is ${score}%! I'm in the top tier of job seekers. 🚀\n\nTrack your career moves with @selectd_app\n\n#JobSearch #CareerGrowth`);
+                const url = "https://selectd.co.in";
+                window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(url)}`, '_blank');
+            });
+        }
+    }
 });

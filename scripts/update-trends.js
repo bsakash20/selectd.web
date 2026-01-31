@@ -71,6 +71,30 @@ async function updateIndex() {
             console.warn('Footer trends markers not found!');
         }
 
+        // 4. Update Live Market Ticker
+        const tickerItems = keywords.map(kw => `<span class="ticker-item"><strong>${kw}</strong> <span class="trend-up">▲</span></span>`).join('\n                    ');
+
+        const tickerRegex = /(<!-- DYNAMIC_TICKER_START -->)([\s\S]*?)(<!-- DYNAMIC_TICKER_END -->)/;
+        if (tickerRegex.test(content)) {
+            content = content.replace(tickerRegex, `$1\n                    ${tickerItems}\n                    $3`);
+            console.log('Updated ticker items successfully.');
+        }
+
+        const tickerDupRegex = /(<!-- DYNAMIC_TICKER_DUPLICATE_START -->)([\s\S]*?)(<!-- DYNAMIC_TICKER_DUPLICATE_END -->)/;
+        if (tickerDupRegex.test(content)) {
+            content = content.replace(tickerDupRegex, `$1\n                    ${tickerItems}\n                    $3`);
+            console.log('Updated ticker duplicate successfully.');
+        }
+
+        // 5. Update Date
+        const now = new Date();
+        const dateString = now.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        const dateRegex = /(<!-- DYNAMIC_DATE_START -->)([\s\S]*?)(<!-- DYNAMIC_DATE_END -->)/;
+        if (dateRegex.test(content)) {
+            content = content.replace(dateRegex, `$1${dateString}$3`);
+            console.log('Updated date successfully.');
+        }
+
         fs.writeFileSync(INDEX_PATH, content);
         console.log('Successfully wrote updates to index.html');
 
