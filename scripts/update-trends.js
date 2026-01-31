@@ -34,56 +34,102 @@ function generateTrends() {
     return [...selectedJobs, ...selectedEd, ...selectedMisc];
 }
 
+function generateTickerItems() {
+    const selectedJobs = shuffle([...JOB_KEYWORDS]).slice(0, 4);
+    const selectedEd = shuffle([...EDUCATION_KEYWORDS]).slice(0, 3);
+
+    const items = [];
+
+    // Add Live Metrics
+    const activeSeekers = Math.floor(Math.random() * (3000 - 1500) + 1500).toLocaleString();
+    items.push({ text: `Seekers Online: ${activeSeekers}`, type: 'metric' });
+
+    const avgOfferTime = Math.floor(Math.random() * (22 - 14) + 14);
+    items.push({ text: `Avg. Hiring Cycle: ${avgOfferTime} Days`, type: 'metric' });
+
+    // Add Job Trends with %
+    selectedJobs.forEach(job => {
+        const trend = Math.floor(Math.random() * (35 - 8) + 8);
+        items.push({ text: job, trend: `+${trend}%`, type: 'job' });
+    });
+
+    // Add Education
+    selectedEd.forEach(ed => {
+        items.push({ text: ed, type: 'ed' });
+    });
+
+    return items;
+}
+
 async function updateIndex() {
     try {
         console.log('Reading index.html...');
         let content = fs.readFileSync(INDEX_PATH, 'utf8');
 
-        const keywords = generateTrends();
-        const keywordsString = keywords.join(', ');
+        // Keywords for SEO (just strings)
+        const seoKeywords = generateTrends();
+        const seoKeywordsString = seoKeywords.join(', ');
 
-        console.log('Generated New Keywords:', keywordsString);
+        console.log('Generated SEO Keywords:', seoKeywordsString);
+
+        // Ticker items (rich objects)
+        const tickerData = generateTickerItems();
+
+        const tickerItems = tickerData.map(item => {
+            if (item.type === 'metric') {
+                return `<span class="ticker-item metric"><strong>${item.text}</strong></span>`;
+            }
+            if (item.type === 'job') {
+                return `<span class="ticker-item"><strong>${item.text}</strong> <span class="trend-badge">${item.trend}</span></span>`;
+            }
+            return `<span class="ticker-item"><strong>${item.text}</strong> <span class="trend-up">▲</span></span>`;
+        }).join('\n                    ');
 
         // 1. Update Meta Tags
         const metaRegex = /(<!-- DYNAMIC_KEYWORDS_START -->)([\s\S]*?)(<!-- DYNAMIC_KEYWORDS_END -->)/;
         if (metaRegex.test(content)) {
-            content = content.replace(metaRegex, `$1, ${keywordsString}$3`);
-            console.log('Updated meta keywords successfully.');
-        } else {
-            console.warn('Meta keywords markers not found!');
+            content = content.replace(metaRegex, `$1, ${seoKeywordsString}$3`);
         }
 
-        // 2. Update JSON-LD Keywords (For AI Platforms)
+        // 2. Update JSON-LD Keywords
         const jsonRegex = /(<!-- DYNAMIC_JSON_KEYWORDS_START -->)([\s\S]*?)(<!-- DYNAMIC_JSON_KEYWORDS_END -->)/;
         if (jsonRegex.test(content)) {
-            content = content.replace(jsonRegex, `$1, ${keywordsString}$3`);
-            console.log('Updated JSON-LD keywords successfully.');
-        } else {
-            console.warn('JSON-LD keywords markers not found!');
+            content = content.replace(jsonRegex, `$1, ${seoKeywordsString}$3`);
         }
 
         // 3. Update Footer Visible Section
         const footerRegex = /(<!-- TRENDING_TERMS_START -->)([\s\S]*?)(<!-- TRENDING_TERMS_END -->)/;
         if (footerRegex.test(content)) {
-            content = content.replace(footerRegex, `$1${keywordsString}$3`);
-            console.log('Updated footer trends successfully.');
-        } else {
-            console.warn('Footer trends markers not found!');
+            content = content.replace(footerRegex, `$1${seoKeywordsString}$3`);
         }
 
         // 4. Update Live Market Ticker
-        const tickerItems = keywords.map(kw => `<span class="ticker-item"><strong>${kw}</strong> <span class="trend-up">▲</span></span>`).join('\n                    ');
-
         const tickerRegex = /(<!-- DYNAMIC_TICKER_START -->)([\s\S]*?)(<!-- DYNAMIC_TICKER_END -->)/;
         if (tickerRegex.test(content)) {
             content = content.replace(tickerRegex, `$1\n                    ${tickerItems}\n                    $3`);
-            console.log('Updated ticker items successfully.');
         }
 
         const tickerDupRegex = /(<!-- DYNAMIC_TICKER_DUPLICATE_START -->)([\s\S]*?)(<!-- DYNAMIC_TICKER_DUPLICATE_END -->)/;
         if (tickerDupRegex.test(content)) {
             content = content.replace(tickerDupRegex, `$1\n                    ${tickerItems}\n                    $3`);
-            console.log('Updated ticker duplicate successfully.');
+        }
+
+        // Generate Momentum Stats for Footer
+        const momentum = [
+            { label: 'Market Sentiment', value: 'Bullish', indicator: '🔥' },
+            { label: 'Remote Opportunities', value: 'Expanding', indicator: '🌍' },
+            { label: 'AI Role Premium', value: '+14.2%', indicator: '↗️' }
+        ];
+        const momentumHtml = momentum.map(stat => `
+            <div class="momentum-item">
+                <span class="momentum-label">${stat.label}</span>
+                <span class="momentum-value">${stat.indicator} ${stat.value}</span>
+            </div>
+        `).join('');
+
+        const momentumRegex = /(<!-- MOMENTUM_STATS_START -->)([\s\S]*?)(<!-- MOMENTUM_STATS_END -->)/;
+        if (momentumRegex.test(content)) {
+            content = content.replace(momentumRegex, `$1${momentumHtml}$3`);
         }
 
         // 5. Update Date
@@ -92,7 +138,6 @@ async function updateIndex() {
         const dateRegex = /(<!-- DYNAMIC_DATE_START -->)([\s\S]*?)(<!-- DYNAMIC_DATE_END -->)/;
         if (dateRegex.test(content)) {
             content = content.replace(dateRegex, `$1${dateString}$3`);
-            console.log('Updated date successfully.');
         }
 
         fs.writeFileSync(INDEX_PATH, content);
