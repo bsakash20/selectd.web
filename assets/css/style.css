@@ -1039,6 +1039,21 @@ h3,
     color: var(--accent-orange);
 }
 
+.feature-icon-wrapper.red {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+.feature-icon-wrapper.green {
+    background: rgba(34, 197, 94, 0.15);
+    color: var(--accent-green);
+}
+
+.feature-icon-wrapper.purple {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+}
+
 .feature-icon {
     width: 32px;
     height: 32px;
