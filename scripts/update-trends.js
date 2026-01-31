@@ -53,7 +53,16 @@ async function updateIndex() {
             console.warn('Meta keywords markers not found!');
         }
 
-        // 2. Update Footer Visible Section
+        // 2. Update JSON-LD Keywords (For AI Platforms)
+        const jsonRegex = /(<!-- DYNAMIC_JSON_KEYWORDS_START -->)([\s\S]*?)(<!-- DYNAMIC_JSON_KEYWORDS_END -->)/;
+        if (jsonRegex.test(content)) {
+            content = content.replace(jsonRegex, `$1, ${keywordsString}$3`);
+            console.log('Updated JSON-LD keywords successfully.');
+        } else {
+            console.warn('JSON-LD keywords markers not found!');
+        }
+
+        // 3. Update Footer Visible Section
         const footerRegex = /(<!-- TRENDING_TERMS_START -->)([\s\S]*?)(<!-- TRENDING_TERMS_END -->)/;
         if (footerRegex.test(content)) {
             content = content.replace(footerRegex, `$1${keywordsString}$3`);

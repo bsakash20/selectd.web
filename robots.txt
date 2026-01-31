@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /scripts/
+
+# Allow AI scrapers specifically
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://selectd.co.in/sitemap.xml
