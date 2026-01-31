@@ -356,4 +356,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Modals logic removed as store links are now live
+
+    // ==========================================
+    // Smart Banner Device Detection
+    // ==========================================
+    const bannerBtn = document.querySelector('.js-banner-btn');
+    if (bannerBtn) {
+        const isAndroid = /Android/i.test(navigator.userAgent);
+        if (isAndroid) {
+            bannerBtn.href = 'https://play.google.com/store/apps/details?id=com.selectd.app';
+            document.querySelector('.banner-subtitle').textContent = 'Official Android Command Center';
+        }
+    }
 });
