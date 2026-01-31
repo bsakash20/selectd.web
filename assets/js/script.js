@@ -410,9 +410,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (shareTwitter) {
             shareTwitter.addEventListener('click', () => {
                 const score = healthNumber.textContent;
-                const text = encodeURIComponent(`My Job Search Health Score is ${score}%! I'm in the top tier of job seekers. 🚀\n\nTrack your career moves with @selectd_app\n\n#JobSearch #CareerGrowth`);
+                const text = encodeURIComponent(`My Job Search Health Score is ${score}%! I'm in the top tier of job seekers. 🚀\n\n#JobSearch #CareerGrowth`);
                 const url = "https://selectd.co.in";
                 window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(url)}`, '_blank');
+            });
+        }
+
+        const shareLinkedin = document.querySelector('.js-share-linkedin');
+        if (shareLinkedin) {
+            shareLinkedin.addEventListener('click', () => {
+                const url = "https://selectd.co.in";
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
             });
         }
     }
