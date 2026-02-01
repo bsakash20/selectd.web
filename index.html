@@ -24,6 +24,9 @@
     <meta property="og:image" content="https://selectd.co.in/assets/img/og-image.png">
     <meta property="og:site_name" content="selectd">
     <meta property="og:locale" content="en_US">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -32,6 +35,10 @@
     <meta name="twitter:description"
         content="Master your job search with the weapon used by the top 1%. Track your pipeline, master negotiations, and win your dream offer.">
     <meta name="twitter:image" content="https://selectd.co.in/assets/img/og-image.png">
+    <meta name="twitter:label1" content="Category">
+    <meta name="twitter:data1" content="Productivity / Career">
+    <meta name="twitter:label2" content="Rating">
+    <meta name="twitter:data2" content="★★★★★ 5.0">
 
     <!-- Favicons & App Icons -->
     <link rel="icon" type="image/png" href="assets/img/icon.png">
@@ -44,16 +51,14 @@
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#6366f1">
     <meta name="apple-mobile-web-app-title" content="selectd">
+    <!-- Hardened Semantic Metadata -->
     <meta name="application-name" content="selectd">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Alternate Names for SEO -->
-    <meta name="subject" content="Job Tracker and Job Search Organizer App">
-    <meta name="classification" content="Job Search, Career Management, Productivity">
-    <meta name="coverage" content="Worldwide">
-    <meta name="distribution" content="Global">
+    <meta name="apple-mobile-web-app-title" content="selectd">
+    <meta name="DC.title" content="selectd | Your Personal Job Search Command Center">
+    <meta name="DC.description"
+        content="Master your job search with the weapon used by the top 1%. Track your pipeline, master negotiations, and win your dream offer.">
+    <meta name="geo.region" content="IN">
+    <meta name="geo.placename" content="India">
 
     <!-- Structured Data / JSON-LD -->
     <script type="application/ld+json">
@@ -81,7 +86,12 @@
         "author": {
             "@type": "Organization",
             "name": "selectd",
-            "url": "https://selectd.co.in"
+            "url": "https://selectd.co.in",
+            "logo": "https://selectd.co.in/assets/img/icon.png",
+            "sameAs": [
+                "https://apps.apple.com/app/id6756949020",
+                "https://play.google.com/store/apps/details?id=com.selectd.app"
+            ]
         },
         "downloadUrl": [
             "https://apps.apple.com/app/id6756949020",
@@ -108,8 +118,51 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://selectd.co.in"
+        }, {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Privacy Policy",
+            "item": "https://selectd.co.in/privacy"
+        }, {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Terms of Service",
+            "item": "https://selectd.co.in/terms"
+        }]
+    }
+    </script>
 
 
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "selectd",
+        "operatingSystem": "iOS",
+        "applicationCategory": "ProductivityApplication",
+        "installUrl": "https://apps.apple.com/app/id6756949020"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MobileApplication",
+        "name": "selectd",
+        "operatingSystem": "Android",
+        "applicationCategory": "ProductivityApplication",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.selectd.app"
+    }
+    </script>
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -263,25 +316,37 @@
                     <!-- DYNAMIC_TICKER_START -->
                     <span class="ticker-item metric"><strong>Seekers Online: 1,584</strong></span>
                     <span class="ticker-item metric"><strong>Avg. Hiring Cycle: 19 Days</strong></span>
-                    <span class="ticker-item"><strong>Software Engineering Trends</strong> <span class="trend-badge">+12%</span></span>
+                    <span class="ticker-item"><strong>Software Engineering Trends</strong> <span
+                            class="trend-badge">+12%</span></span>
                     <span class="ticker-item"><strong>SaaS Sales</strong> <span class="trend-badge">+19%</span></span>
-                    <span class="ticker-item"><strong>Blockchain Developer</strong> <span class="trend-badge">+21%</span></span>
-                    <span class="ticker-item"><strong>iOS Development Trends</strong> <span class="trend-badge">+8%</span></span>
-                    <span class="ticker-item"><strong>EdTech Certifications</strong> <span class="trend-up">▲</span></span>
-                    <span class="ticker-item"><strong>Career Transition Skills</strong> <span class="trend-up">▲</span></span>
-                    <span class="ticker-item"><strong>Corporate Training Tech</strong> <span class="trend-up">▲</span></span>
+                    <span class="ticker-item"><strong>Blockchain Developer</strong> <span
+                            class="trend-badge">+21%</span></span>
+                    <span class="ticker-item"><strong>iOS Development Trends</strong> <span
+                            class="trend-badge">+8%</span></span>
+                    <span class="ticker-item"><strong>EdTech Certifications</strong> <span
+                            class="trend-up">▲</span></span>
+                    <span class="ticker-item"><strong>Career Transition Skills</strong> <span
+                            class="trend-up">▲</span></span>
+                    <span class="ticker-item"><strong>Corporate Training Tech</strong> <span
+                            class="trend-up">▲</span></span>
                     <!-- DYNAMIC_TICKER_END -->
                     <!-- Duplicate for seamless scroll -->
                     <!-- DYNAMIC_TICKER_DUPLICATE_START -->
                     <span class="ticker-item metric"><strong>Seekers Online: 1,584</strong></span>
                     <span class="ticker-item metric"><strong>Avg. Hiring Cycle: 19 Days</strong></span>
-                    <span class="ticker-item"><strong>Software Engineering Trends</strong> <span class="trend-badge">+12%</span></span>
+                    <span class="ticker-item"><strong>Software Engineering Trends</strong> <span
+                            class="trend-badge">+12%</span></span>
                     <span class="ticker-item"><strong>SaaS Sales</strong> <span class="trend-badge">+19%</span></span>
-                    <span class="ticker-item"><strong>Blockchain Developer</strong> <span class="trend-badge">+21%</span></span>
-                    <span class="ticker-item"><strong>iOS Development Trends</strong> <span class="trend-badge">+8%</span></span>
-                    <span class="ticker-item"><strong>EdTech Certifications</strong> <span class="trend-up">▲</span></span>
-                    <span class="ticker-item"><strong>Career Transition Skills</strong> <span class="trend-up">▲</span></span>
-                    <span class="ticker-item"><strong>Corporate Training Tech</strong> <span class="trend-up">▲</span></span>
+                    <span class="ticker-item"><strong>Blockchain Developer</strong> <span
+                            class="trend-badge">+21%</span></span>
+                    <span class="ticker-item"><strong>iOS Development Trends</strong> <span
+                            class="trend-badge">+8%</span></span>
+                    <span class="ticker-item"><strong>EdTech Certifications</strong> <span
+                            class="trend-up">▲</span></span>
+                    <span class="ticker-item"><strong>Career Transition Skills</strong> <span
+                            class="trend-up">▲</span></span>
+                    <span class="ticker-item"><strong>Corporate Training Tech</strong> <span
+                            class="trend-up">▲</span></span>
                     <!-- DYNAMIC_TICKER_DUPLICATE_END -->
                 </div>
             </div>
@@ -1026,24 +1091,27 @@
             <div class="container">
                 <div class="market-momentum">
                     <!-- MOMENTUM_STATS_START -->
-            <div class="momentum-item">
-                <span class="momentum-label">Market Sentiment</span>
-                <span class="momentum-value">🔥 Bullish</span>
-            </div>
-        
-            <div class="momentum-item">
-                <span class="momentum-label">Remote Opportunities</span>
-                <span class="momentum-value">🌍 Expanding</span>
-            </div>
-        
-            <div class="momentum-item">
-                <span class="momentum-label">AI Role Premium</span>
-                <span class="momentum-value">↗️ +14.2%</span>
-            </div>
-        <!-- MOMENTUM_STATS_END -->
+                    <div class="momentum-item">
+                        <span class="momentum-label">Market Sentiment</span>
+                        <span class="momentum-value">🔥 Bullish</span>
+                    </div>
+
+                    <div class="momentum-item">
+                        <span class="momentum-label">Remote Opportunities</span>
+                        <span class="momentum-value">🌍 Expanding</span>
+                    </div>
+
+                    <div class="momentum-item">
+                        <span class="momentum-label">AI Role Premium</span>
+                        <span class="momentum-value">↗️ +14.2%</span>
+                    </div>
+                    <!-- MOMENTUM_STATS_END -->
                 </div>
-                <p><strong>Trending:</strong> <!-- TRENDING_TERMS_START -->UX Research Roles, AI Engineering, Machine Learning Specialist, Software Engineering Trends, Corporate Training Tech, Online Graduate Programs, Higher Ed Trends, Future of Work<!-- TRENDING_TERMS_END --></p>
-                <p class="footer-update">Data Last Refreshed: <!-- DYNAMIC_DATE_START -->January 31, 2026<!-- DYNAMIC_DATE_END --></p>
+                <p><strong>Trending:</strong> <!-- TRENDING_TERMS_START -->UX Research Roles, AI Engineering, Machine
+                    Learning Specialist, Software Engineering Trends, Corporate Training Tech, Online Graduate Programs,
+                    Higher Ed Trends, Future of Work<!-- TRENDING_TERMS_END --></p>
+                <p class="footer-update">Data Last Refreshed: <!-- DYNAMIC_DATE_START -->January 31,
+                    2026<!-- DYNAMIC_DATE_END --></p>
             </div>
         </div>
         <div class="footer-bottom">

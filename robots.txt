@@ -3,7 +3,7 @@ Allow: /
 Allow: /assets/
 Allow: /scripts/
 
-# Allow AI scrapers specifically
+# Allow major SEO and AI bots for Directory Indexing
 User-agent: GPTBot
 Allow: /
 
@@ -14,6 +14,12 @@ User-agent: Google-Extended
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
 Allow: /
 
 Sitemap: https://selectd.co.in/sitemap.xml
