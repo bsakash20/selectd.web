@@ -88,6 +88,7 @@ async function updateIndex() {
         // 1. Update Meta Tags
         const metaRegex = /(<!-- DYNAMIC_KEYWORDS_START -->)([\s\S]*?)(<!-- DYNAMIC_KEYWORDS_END -->)/;
         if (metaRegex.test(content)) {
+            // Replaces the ENTIRE content between tags, avoiding duplication
             content = content.replace(metaRegex, `$1, ${seoKeywordsString}$3`);
         }
 
@@ -114,22 +115,35 @@ async function updateIndex() {
             content = content.replace(tickerDupRegex, `$1\n                    ${tickerItems}\n                    $3`);
         }
 
-        // Generate Momentum Stats for Footer
+        // Generate Momentum Stats for Footer (Randomized for "Dynamic" Feel)
+        const sentiments = [
+            { v: 'Bullish', i: '🔥' }, { v: 'High Growth', i: '🚀' },
+            { v: 'Competitive', i: '⚔️' }, { v: 'Stable', i: '⚖️' }
+        ];
+        const remoteStatus = [
+            { v: 'Expanding', i: '🌍' }, { v: 'Stabilizing', i: '🏢' },
+            { v: 'High Demand', i: '📶' }
+        ];
+        const premiums = ['+12.4%', '+14.2%', '+16.8%', '+11.5%', '+15.1%'];
+
+        const selectedSentiment = sentiments[Math.floor(Math.random() * sentiments.length)];
+        const selectedRemote = remoteStatus[Math.floor(Math.random() * remoteStatus.length)];
+        const selectedPremium = premiums[Math.floor(Math.random() * premiums.length)];
+
         const momentum = [
-            { label: 'Market Sentiment', value: 'Bullish', indicator: '🔥' },
-            { label: 'Remote Opportunities', value: 'Expanding', indicator: '🌍' },
-            { label: 'AI Role Premium', value: '+14.2%', indicator: '↗️' }
+            { label: 'Market Sentiment', value: selectedSentiment.v, indicator: selectedSentiment.i },
+            { label: 'Remote Opportunities', value: selectedRemote.v, indicator: selectedRemote.i },
+            { label: 'AI Role Premium', value: selectedPremium, indicator: '↗️' }
         ];
         const momentumHtml = momentum.map(stat => `
             <div class="momentum-item">
                 <span class="momentum-label">${stat.label}</span>
                 <span class="momentum-value">${stat.indicator} ${stat.value}</span>
-            </div>
-        `).join('');
+            </div>`).join('');
 
         const momentumRegex = /(<!-- MOMENTUM_STATS_START -->)([\s\S]*?)(<!-- MOMENTUM_STATS_END -->)/;
         if (momentumRegex.test(content)) {
-            content = content.replace(momentumRegex, `$1${momentumHtml}$3`);
+            content = content.replace(momentumRegex, `$1${momentumHtml}\n        $3`);
         }
 
         // 5. Update Date

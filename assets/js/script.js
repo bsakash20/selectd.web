@@ -450,4 +450,41 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // ==========================================
+    // Live Metrics Fluctuations
+    // ==========================================
+    const initLiveMetrics = () => {
+        const seekersElements = Array.from(document.querySelectorAll('.ticker-item.metric')).filter(el => el.textContent.includes('Seekers Online'));
+
+        if (seekersElements.length === 0) return;
+
+        setInterval(() => {
+            seekersElements.forEach(el => {
+                const strong = el.querySelector('strong');
+                if (!strong) return;
+
+                const currentText = strong.textContent;
+                const match = currentText.match(/Seekers Online: ([\d,]+)/);
+
+                if (match) {
+                    let count = parseInt(match[1].replace(/,/g, ''));
+                    // Add or subtract 1-3 people
+                    const change = Math.floor(Math.random() * 7) - 3;
+                    count = Math.max(1000, count + change);
+
+                    strong.textContent = `Seekers Online: ${count.toLocaleString()}`;
+
+                    // Add a tiny flash effect
+                    strong.style.transition = 'color 0.3s ease';
+                    strong.style.color = '#10b981';
+                    setTimeout(() => {
+                        strong.style.color = '';
+                    }, 500);
+                }
+            });
+        }, 4000);
+    };
+
+    initLiveMetrics();
 });
