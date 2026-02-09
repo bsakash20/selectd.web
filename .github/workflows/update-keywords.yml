@@ -12,7 +12,10 @@ jobs:
       contents: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -27,4 +30,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add index.html
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: dynamic keyword update $(date +'%Y-%m-%d')" && git push)
+          git diff --quiet && git diff --staged --quiet || (
+            git commit -m "chore: dynamic keyword update $(date +'%Y-%m-%d')"
+            git pull --rebase origin main
+            git push
+          )
