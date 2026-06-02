@@ -251,28 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==========================================
-    // Pricing Card Hover Effects
-    // ==========================================
-    const pricingCards = document.querySelectorAll('.pricing-card');
-
-    pricingCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            pricingCards.forEach(c => {
-                if (c !== card) {
-                    c.style.opacity = '0.7';
-                    c.style.transform = 'scale(0.98)';
-                }
-            });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            pricingCards.forEach(c => {
-                c.style.opacity = '1';
-                c.style.transform = '';
-            });
-        });
-    });
 
     // ==========================================
     // Refined 3D Tilt with Glare for Device

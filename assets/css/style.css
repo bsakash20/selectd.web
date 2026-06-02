@@ -1828,108 +1828,6 @@ h3,
     font-size: 0.9rem;
 }
 
-/* ==========================================
-   PRICING SECTION
-   ========================================== */
-.pricing-section {
-    padding: 8rem 0;
-    background: var(--bg);
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.pricing-card {
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 2.5rem;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.pricing-card:hover {
-    transform: translateY(-8px);
-}
-
-.pricing-card.pro {
-    border-color: var(--primary);
-    background: linear-gradient(180deg, rgba(99, 102, 241, 0.1), var(--bg-card));
-}
-
-.popular-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: white;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.pricing-header {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.pricing-header h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.price {
-    font-size: 3rem;
-    font-weight: 800;
-    font-family: 'Outfit', sans-serif;
-}
-
-.price-period {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.pricing-features {
-    list-style: none;
-    margin-bottom: 2rem;
-}
-
-.pricing-features li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 0;
-    font-size: 0.95rem;
-}
-
-.pricing-features li.excluded {
-    color: var(--text-muted);
-}
-
-.check {
-    color: var(--accent-green);
-    font-weight: 700;
-}
-
-.cross {
-    color: #ef4444;
-}
-
-.pricing-card .btn-primary,
-.pricing-card .btn-secondary {
-    width: 100%;
-    justify-content: center;
-}
 
 /* ==========================================
    PERSONAS SECTION
@@ -2216,10 +2114,6 @@ h3,
         grid-template-columns: 1fr;
     }
 
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-    }
 
     .personas-grid {
         grid-template-columns: repeat(2, 1fr);
